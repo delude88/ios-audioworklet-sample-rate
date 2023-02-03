@@ -33,7 +33,7 @@
       const workletScript = document.querySelector('script[type=worklet]');
       const blob = new Blob([workletScript.innerText], { type: 'application/javascript' });
       const url = URL.createObjectURL(blob);
-      audioContext.audioWorklet.addModule(url).then(() => {
+      return audioContext.audioWorklet.addModule(url).then(() => {
         const worklet = new AudioWorkletNode(audioContext, 'any-worklet');
         worklet.connect(audioContext.destination);
         return new Promise((resolve) => {
